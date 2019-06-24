@@ -17,6 +17,10 @@ x11_hash_module = Extension('x11_hash',
                                include_dirs=['.', './sha3'])
 
 setup (name = 'x11_hash',
-       version = '1.4',
+       version = '1.4.1',
        description = 'Binding for X11 proof of work hashing.',
+       maintainer = 'akhavr',
+       maintainer_email = 'akhavr@khavr.com',
+       license = 'MIT License',
+       url = 'https://github.com/akhavr/x11_hash/',
        ext_modules = [x11_hash_module])

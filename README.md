@@ -27,3 +27,4 @@ Credits
 * Module maintained by @flare https://github.com/nightlydarkcoin/xcoin-hash
 * Module maintained by @vertoe https://github.com/vertoe/darkcoin_hash
 * Module maintained by @jakehaas https://github.com/jakehaas/x11_hash
+* Module maintained by @akhavr https://github.com/akhavr/x11_hash

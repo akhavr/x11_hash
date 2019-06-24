@@ -1,2 +1,7 @@
 build
+dist
+env
+env3
+MANIFEST
 .DS_Store
+*.egg-info

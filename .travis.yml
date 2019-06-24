@@ -1,0 +1,30 @@
+sudo: required
+language: python
+services:
+  - docker
+matrix:
+  include:
+  - os: linux
+before_install:
+- source contrib/travis/version_env.sh
+- echo x11hash version is $X11HASH_VERSION
+install:
+- if [[ -n $TRAVIS_TAG ]]; then
+      ./contrib/travis/install.sh;
+  fi
+script:
+- if [[ -n $TRAVIS_TAG ]]; then
+      mkdir -p build;
+      ./contrib/travis/travis-build.sh;
+  fi
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: PHDDIkFdkSQ+4ptVQReH9vEJ5E+QFNBqipwoGkbMDed7gnHBNetioRjH9wv/C4CYIbY9uuDHA4xLBuTaNkyQYsGag59UjAF6jBwG9QQ/3nhV2mwBo3fXrFlJ8Y4SkXol93hnP6u5uvxyfrZ1He7Xbu9hw9idH7ig30Rjpnj6Zad1XTP1VjetkKCZTHuOuBuxrifpzyT3O+voBWfmXLYGKMzHoJRJYtm8wjb8F8EPkOwUIUB/nY9uyMBaHr2+IyeA8j+3t4sZH0dbgNBj5P5fgM/KvbRgFvR2pe0/aUP3ioN/BIx9S8HRaIgHzmXk1HEJ8nUSTBAVHt6bpZwFo5FYnXBu07qoyf6xzp8v2najsN3jNTrPS2VURuHqLl/p/nPSqWo3e+1nwDCweoDKuDspUPQ3G4ain3L+73ly9+wrcDh6sq/8kmAeMi+DTtyo2CrqJJanZ+CKQcHa19mudUtB6jTGPk/F9W715+eMJ26N/5dkCEYdi8UWxv5puQJIboFfL0fPluhVP64uxDZrPQFrOmcBY9/39zyMU+rjSIkZWii+X/baSBoeEbYlnCCRlqBjH15I+DEIlC3ajNsZqmLIfjg+5ykNI11rPU4QTRCK0VQCbmNzjBXiy9UAN4o6L4uyZlKeu7DMXCwib4T/YHgBZOKvPKML4Wg0jo9RMci5WBA=
+  file:
+  - build/x11_hash-$X11HASH_VERSION-win32.zip
+  - build/x11_hash-$X11HASH_VERSION-win64.zip
+  on:
+    repo: zebra-lucky/x11_hash
+    tags: true
